@@ -181,17 +181,7 @@ TypeSystem`Validation`PackagePrivate`vtor[TypeSystem`Either[types__], x_] :=
 (* ::Subsection:: *)
 (*Allow trailing comma*)
 
-
-$PreRead = $PreRead /* (Replace[#, RowBox[{ first__, "," }] :> RowBox[{first}], {0, Infinity}] &);
-
-(* Module[{, a = 1, b = 2,}, body] *)
-(*         ^             ^         *)
-$blocks = {Module, With, Block, Function};
-Unprotect /@ $blocks;
-Do[ With[{block = $block},
-  $block[{pre___, Null .., post___}, body__] := block[{pre, post}, body]
-  ], {$block, $blocks}];
-Protect /@ $blocks;
+<< AllowTrailingComma.m
 
 
 (* ::Subsection:: *)
