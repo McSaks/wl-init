@@ -155,12 +155,6 @@ Protect@NotebookPath;
 (*Correct some system behaviour*)
 
 
-(* Where could it possible be bad? *)
-(* If it appears buggy I’ll remove it. *)
-$rules = {Rule, RuleDelayed};
-SetAttributes[#, SequenceHold]& /@ $rules;
-
-
 (* Two different forms of Throw & Catch is a headache.
  * Both Catch[ Throw[expr, tag] ] and Catch[ Throw[expr] , tag] catch nothing!
  * This makes a tag be used implicitly. *)
@@ -181,22 +175,7 @@ TypeSystem`Validation`PackagePrivate`vtor[TypeSystem`Either[types__], x_] :=
 (* ::Subsection:: *)
 (*Simple input of Sequence*)
 
-
-(* Assumes SetAttributes[Rule, SequenceHold], as set in the previous subsection *)
-If[$Pre === Unevaluated[$Pre], $Pre = Identity];
-SetAttributes[emptyPre, HoldAllComplete];
-emptyPre[expr___] := Unevaluated @ expr /. HoldPattern[System`\[EmptySet]] -> Sequence[];
-$Pre = $Pre /* emptyPre;
-
-(* Only boxes interface. For some reason, $PreRead doesn't work in text-based interface at all! *)
-If[$PreRead === Unevaluated[$PreRead], $PreRead = Identity];
-$PreRead = $PreRead /* (Replace[#, RowBox[{"(", ")"}] -> "Sequence[]", {0, Infinity}] &);
-$PreRead = $PreRead /* (Replace[#, RowBox[{"(",
-    RowBox[{ first_, rest: PatternSequence[",".., _].., ","|PatternSequence[] }],
-  ")"}] :> RowBox[{"Sequence", "[", RowBox[{first, rest}], "]"}], {0, Infinity}] &);
-$PreRead = $PreRead /* (Replace[#, RowBox[{"(",
-    RowBox[{ first_, ",".. }],
-  ")"}] :> RowBox[{"Sequence", "[", RowBox[{first}], "]"}], {0, Infinity}] &);
+<< SequenceParse.m
 
 
 (* ::Subsection:: *)
