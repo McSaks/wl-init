@@ -9,6 +9,7 @@ FormatUsage[str_] := StringReplace[str,
       RegularExpression["(?!</)_"] :>
         "\*StyleBox[\(" <> i <> "\), \"TI\"]",
     "/_" -> "_",
+    "->" -> "\[Rule]",
     "..." -> "\[Ellipsis]"
   }] <> "\),\"MR\",ShowStringCharacters->True]\)"];
 
