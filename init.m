@@ -142,62 +142,7 @@ System`ScopeReturn[ret_] := Throw[ret, Scope];
 (* ::Subsection:: *)
 (*IF*)
 
-
-(* IF[test][trueBranch][falseBranch]. Not more readible than builtin If. Will be removed. *)
-System`IF[___] /; Message[System`IF::obsalt, System`IF, If] = Null;
-System`IF[test_] :=
-  Function[trueBranch,
-    Function[falseBranch,
-      System`If[ TrueQ[test], trueBranch, falseBranch],
-    {HoldFirst}],
-  {HoldFirst}]
-
-
-(* If [test] Then [trueBranch] Else [falseBranch]. Quite another matter.
- * Either Then[...] or Else[...] is omittable (not both), Null is returned in its place.
- * Wierd things are possible like Else["test == False"] If[test] due to commutativity of Times;
- * avoid them, since it's not readible.
- *
- * Note:
- *   If [test]
- *   Then[
- *     trueBranch
- *   ]
- *   Else[
- *     falseBranch
- *   ]
- * is not parsed as expected in top-level expression, but as three separate expression.
- * When enclosed in delimeters this code is not an issue.
- * Use something like
- *   If [test] [
- *     trueBranch
- *   ] Else [
- *     falseBranch
- *   ]
- * if needed, to parse it as a single expression. *)
-Unprotect[System`If];
-SetAttributes[System`Then, HoldFirst];
-SetAttributes[System`Else, HoldFirst];
-SetAttributes[System`IfQ, HoldRest];
-Off[System`If::argbu];
-expr: System`IfQ[_, _, _, __] /;
-  Message[System`IfQ::argb, System`IfQ, Length @ Unevaluated @ expr, 1, 3] := $Failed;
-SyntaxInformation @ System`If = {
-  "ArgumentsPattern" -> {_, _., _., _.},
-  "LocalVariables" -> None,
-  "ColorEqualSigns" -> {1, 1} };
-SyntaxInformation @ System`IfQ = {
-  "ArgumentsPattern" -> {_, _., _.},
-  "LocalVariables" -> None,
-  "ColorEqualSigns" -> {1, 1} };
-IfQ[test_, trueBranch_, falseBranch_ : Null] := If[TrueQ[test], trueBranch, falseBranch];
-If /: If[test_] Then[trueBranch_] Else[falseBranch_] := If[test, trueBranch, falseBranch];
-If /: If[test_] Then[trueBranch_] := If[test, trueBranch];
-If /: If[test_] Else[falseBranch_] := If[!test, falseBranch];
-IfQ /: IfQ[test_] Then[trueBranch_] Else[falseBranch_] := If[TrueQ[test], trueBranch, falseBranch];
-IfQ /: IfQ[test_] Then[trueBranch_] := If[TrueQ[test], trueBranch];
-IfQ /: IfQ[test_] Else[falseBranch_] := If[!TrueQ[test], falseBranch];
-Protect[If];
+<< IfThenElse.m
 
 
 (* ::Subsection:: *)
