@@ -4,6 +4,9 @@
 
 Begin["System`Private`"];
 
+<< FormatUsage.m
+
+
 Unprotect @ MessageName;
 AppendTo[ DownValues@MessageName,
   HoldPattern @ MessageName[x : Except[_Symbol], u_String] :> Quantity[x, u] ];
