@@ -8,11 +8,7 @@ Begin["System`Private`"];
 
 << UsageOnly.m
 
-
-Unprotect @ MessageName;
-AppendTo[ DownValues@MessageName,
-  HoldPattern @ MessageName[x : Except[_Symbol], u_String] :> Quantity[x, u] ];
-Protect @ MessageName;
+<< QuantityInput.m
 
 System`RunShell[cmd___String] := RunProcess[{"zsh", "-c", StringJoin@Riffle[{cmd}, " "]}, "StandardOutput"];
 System`RunShell[___] := $Failed;
