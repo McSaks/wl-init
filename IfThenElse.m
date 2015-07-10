@@ -8,7 +8,8 @@ Either `Then[...]` or `Else[...]` is omittable (not both), `Null` is returned in
 This hack overloads `Times` and is in fact `If[_test_] * Then[_trueBranch_] * Else[_falseBranch_]`, \
 so do not break lines at \[OpenCurlyQuote]`*`\[CloseCurlyQuote] in a top-level expression, as it is parsed as three separate expressions." //Private`FormatUsage;
 
-Else::usage = Then::usage;
+IfThenElse::usage = Else::usage = Then::usage;
+Private`UsageOnly[IfThenElse];
 
 Begin["`Private`"];
 
