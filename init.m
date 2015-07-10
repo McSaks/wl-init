@@ -148,34 +148,7 @@ System`ScopeReturn[ret_] := Throw[ret, Scope];
 (* ::Subsection:: *)
 (*ForEach*)
 
-
-System`ForEach::usage = "ForEach[var, from, to, body] or ForEach[var -> list, body] is another syntax \
-for Do or Table, repending on the semicolon at body's end.
-This syntax keeps ForEach and iterator together, which is more readible, especially for a long body.
-Compare:
-  ForEach[var -> {one, two, three},
-    Very;
-    long;
-    body;
-  ]
-and
-  Do[
-    Very;
-    long;
-    body;
-  , {one, two, three}]";
-
-SetAttributes[System`ForEach, HoldAll];
-
-ForEach[varlist_List, do: CompoundExpression[___, Null]] := Do[do, varlist];
-ForEach[var_ -> list_, do: CompoundExpression[___, Null]] := Do[do, {var, list}];
-ForEach[var_, i_, f_, step:_|PatternSequence[], do: CompoundExpression[___, Null]] := Do[do, {var, i, f, step}];
-
-ForEach[varlist_List, do_] := Table[do, varlist];
-ForEach[var_ -> list_, do_] := Table[do, {var, list}];
-ForEach[var_, i_, f_, step:_|PatternSequence[], do_] := Table[do, {var, i, f, step}];
-SyntaxInformation[ForEach] = {"LocalVariables" -> {"Table", {1, 1}},
-  "ArgumentsPattern" -> {_, _, _., _., _.}};
+<< ForEach.m
 
 
 (* ::Subsection:: *)
