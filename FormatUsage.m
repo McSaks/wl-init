@@ -15,6 +15,6 @@ FormatUsage[str_] := StringReplace[str,
     "/_" -> "_",
     "->" -> "\[Rule]",
     "..." -> "\[Ellipsis]"
-  }] <> "\),\"MR\",ShowStringCharacters->True]\)"];
+  }] <> "\),\"\",ShowStringCharacters->True]\)"];
 
 End[];
