@@ -52,20 +52,7 @@ System`ShowColors[c_:"Indexed"]:=Multicolumn[
       RoundingRadius -> 5]}, Alignment -> Center] & /@ 
   ColorData[c], 3, Alignment -> Center]
 
-Unprotect[System`SwitchPattern];
-expr : System`SwitchPattern[x_, ps : PatternSequence[_, _] ...] :=
-  Replace[x,
-    Append[
-      List @@ ReplacePart[
-        Partition[Hold[ps], 2],
-        {_, 0} -> RuleDelayed],
-      _ :> (Message[SwitchPattern::nomatch, HoldForm[expr]]; $Failed)
-    ]
-  ];
-expr : System`SwitchPattern[args___]:=$Failed /; Message[SwitchPattern::narg, HoldForm[expr], Length@Hold@args];
-SwitchPattern::nomatch = "Mo match found in `1`";
-SwitchPattern::narg = "SwitchPattern must have odd number of arguments (recieved `2`) in `1`";
-SetAttributes[System`SwitchPattern, Attributes[Switch]];
+<< SwitchPattern.m
 
 System`PlotThemeOptions[theme_, smbl_:Plot] := Last /@ System`PlotThemeDump`resolvePlotTheme[theme, smbl];
 System`ShowPlotTheme[theme_, smbl_:Plot] := Misc`EvalOnce @ System`PlotThemeDump`resolvePlotTheme[theme, smbl];
