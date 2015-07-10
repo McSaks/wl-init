@@ -11,7 +11,7 @@ Private`UsageOnly[AllowTrailingComma];
 Begin["`Private`"];
 
 If[$PreRead === Unevaluated[$PreRead], $PreRead = Identity];
-$PreRead = (ReplaceAll[#, RowBox[{ first__, "," }] :> RowBox[{first}]] &) ~Composition~ $PreRead;
+$PreRead = (ReplaceAll[#, RowBox[{ first__, ","|"\[InvisibleComma]" }] :> RowBox[{first}]] &) ~Composition~ $PreRead;
 
 (* Module[{, a = 1, b = 2,}, body] *)
 (*         ^             ^         *)

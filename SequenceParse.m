@@ -20,13 +20,14 @@ SetAttributes[emptyPre, HoldAllComplete];
 emptyPre[expr___] := Unevaluated @ expr /. HoldPattern[System`\[EmptySet]\[EmptySet]] -> Sequence[];
 $Pre = emptyPre ~Composition~ $Pre;
 
+comma = "," | "\[InvisibleComma]";
 If[$PreRead === Unevaluated[$PreRead], $PreRead = Identity];
 $PreRead = (Replace[#, RowBox[{"(", ")"}] -> "Sequence[]", {0, Infinity}] &) ~Composition~ $PreRead;
 $PreRead = (Replace[#, RowBox[{"(",
-    RowBox[{ first_, rest: PatternSequence[",".., _].., ","|PatternSequence[] }],
+    RowBox[{ first_, rest: PatternSequence[comma.., _].., comma|PatternSequence[] }],
   ")"}] :> RowBox[{"Sequence", "[", RowBox[{first, rest}], "]"}], {0, Infinity}] &) ~Composition~ $PreRead;
 $PreRead = (Replace[#, RowBox[{"(",
-    RowBox[{ first_, ",".. }],
+    RowBox[{ first_, comma.. }],
   ")"}] :> RowBox[{"Sequence", "[", RowBox[{first}], "]"}], {0, Infinity}] &) ~Composition~ $PreRead;
 
 (* Display sequences *)
