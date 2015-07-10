@@ -6,6 +6,8 @@ Begin["System`Private`"];
 
 << FormatUsage.m
 
+<< UsageOnly.m
+
 
 Unprotect @ MessageName;
 AppendTo[ DownValues@MessageName,
