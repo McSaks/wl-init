@@ -16,15 +16,7 @@ System`RunShell[___] := $Failed;
 System`KeyList[list___][assn_] := assn[[#]] & /@ {list};
 
 
-MakeBoxes[Dt[f_], form_] := TemplateBox[
-  {Parenthesize[f, form, 625, 1]},
-  "Dt", Tooltip -> Automatic,
-  DisplayFunction -> (RowBox[{"\[DifferentialD]", #}]&)];
-MakeBoxes[Dt[f_, x_], form_] := TemplateBox[
-  {MakeBoxes[f, form], MakeBoxes[x, form]},
-  "Dt", Tooltip -> Automatic,
-  DisplayFunction -> (FractionBox[RowBox[{"\[DifferentialD]", #}], RowBox[{"\[DifferentialD]", #2}]]&)];
-
+<< DifferentialD.m
 
 System`$PlotThemes := System`$PlotThemes = (
   ListPlot[{}, PlotTheme -> Automatic];
