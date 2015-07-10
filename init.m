@@ -281,8 +281,7 @@ $HistoryLength = 3;
 Unprotect @ $Permissions;
 $Permissions = "Public";
 
-SetOptions[SendMail, "To" -> "mcsaksik@gmail.com", "From" -> "mcsaksik@gmail.com", "Server" -> "smtp.gmail.com",
- "UserName" -> "mcsaksik", "Password" -> "*******", "PortNumber" -> 465, "EncryptionProtocol" -> "SSL"];
+SetOptions[SendMail, Get["mail_auth.wl"]] // Quiet;
 
 
 (*Unprotect @ Convolve;
