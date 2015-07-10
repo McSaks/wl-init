@@ -323,7 +323,7 @@ Protect /@ $blocks;
 (* ::Subsection:: *)
 (*Preload*)
 
-Needs /@ {"Internal`", "GeneralUtilities`", "Macros`"};
+(BeginPackage[#];EndPackage[];)& ~Scan~ {"Internal`", "GeneralUtilities`", "Macros`"};
 
 
 (* ::Subsection:: *)
