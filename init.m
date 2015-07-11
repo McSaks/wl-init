@@ -155,13 +155,7 @@ Protect@NotebookPath;
 (*Correct some system behaviour*)
 
 
-(* Two different forms of Throw & Catch is a headache.
- * Both Catch[ Throw[expr, tag] ] and Catch[ Throw[expr] , tag] catch nothing!
- * This makes a tag be used implicitly. *)
-Unprotect /@ {Throw, Catch};
-Throw[ex_] := Throw[ex, General]; (* default tag is General (why not?) *)
-Catch[ex_] := Catch[ex, _]; (* catching w/o a tag is catching with any tag (isn't it reasonable?) *)
-Protect /@ {Throw, Catch};
+<< ThrowGeneral.m
 
 
 (* Either type is declared but not working *)
