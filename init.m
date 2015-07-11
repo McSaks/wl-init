@@ -181,7 +181,10 @@ TypeSystem`Validation`PackagePrivate`vtor[TypeSystem`Either[types__], x_] :=
 (* ::Subsection:: *)
 (*Preload*)
 
-(BeginPackage[#];EndPackage[];)& ~Scan~ {"Internal`", "GeneralUtilities`", "Macros`"};
+(* (BeginPackage[#];EndPackage[];)& ~Scan~ {"Internal`", "GeneralUtilities`", "Macros`"}; *)
+<<Internal`
+<<GeneralUtilities`
+<<Macros`
 
 
 (* ::Subsection:: *)
