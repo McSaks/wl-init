@@ -8,8 +8,8 @@ Private`UsageOnly[ThrowGeneral];
 Begin["`Private`"];
 
 Unprotect /@ {Throw, Catch};
-(* Throw[ex_] := Throw[ex, General]; *) (* default tag is General (why not?) *)
-(* Catch[ex_] := Catch[ex, _]; *) (* catching w/o a tag is catching with any tag (isn't it reasonable?) *)
+Throw[ex_] := Throw[ex, General]; (* default tag is General (why not?) *)
+Catch[ex_] := Catch[ex, _]; (* catching w/o a tag is catching with any tag (isn't it reasonable?) *)
 Protect /@ {Throw, Catch};
 
 End[];

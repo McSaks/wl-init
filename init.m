@@ -157,13 +157,7 @@ Protect@NotebookPath;
 
 << ThrowGeneral.m
 
-
-(* Either type is declared but not working *)
-TypeSystem`Predicates`PackagePrivate`valid[TypeSystem`Either[types__]] :=
-  AnyTrue[{types}, TypeSystem`Predicates`PackagePrivate`valid];
-TypeSystem`TypeMap[f_, TypeSystem`Either[types__]] := f /@ TypeSystem`Either[types];
-TypeSystem`Validation`PackagePrivate`vtor[TypeSystem`Either[types__], x_] :=
-  AnyTrue[{types}, TypeSystem`Validation`PackagePrivate`vtor[#, x] &];
+If[ $VersionNumber >= 10, << TypeSystemEither.m ]
 
 
 (* ::Subsection:: *)
