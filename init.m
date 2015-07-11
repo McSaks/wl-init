@@ -66,49 +66,7 @@ AppendTo[ UpValues@System`ToUnit, HoldPattern[MessageName[System`ToUnit, unit_]]
 (* to be used as the value of ComplexityFunction option *)
 System`SymbolComplexity[expr_] := Total[Last /@ Tally[Cases[expr, _Symbol, Infinity]]];
 
-(* AtEnd[doFinally] [ some;scope ]
-SetAttributes[System`AtEnd, HoldFirst];
-System`AtEnd[finally_] := Function[{body}, First@{body, finally}, {HoldFirst}]; *)
-
-(* Scope[ ...; ScopeExit[ release resources ]; ... ]
- * like D’s scope(return) { release resources }. *)
-SetAttributes[System`Scope, HoldAll];
-Scope[{vars___}, body_] := Scope[Module[{vars}, body]];
-(* Old stable version, only ScopeSuccess behaviour:
-Scope[body_] :=
-  With[{o =
-      Reap[
-        Catch[
-          Sow[Null, Scope]; (* sowing dummy expr *)
-          body
-        , Scope]
-      , Scope] },
-    ReleaseHold @ Reverse @ Last @ Last @ o; (* ⟵ evaluate 'finally' upward *)
-    First @ o (* ⟵ return result *)
-  ];
-*)
-Scope[body_] :=
-  With[{o =
-      Reap[
-        Catch[
-          Sow[Null, Scope]; (* sowing dummy expr *)
-          body
-        , ex_, Exception]
-      , Scope] },
-    ReleaseHold @ Reverse @ Last @ Last @ o; (* ⟵ evaluate 'finally' upward *)
-    With[ {f = First @ o},
-      If[ Head @ f === Exception,
-        If[ Last @ f =!= Scope,
-          Throw @@ f, (* ⟵ rethrow *)
-          First @ f   (* ⟵ return via ScopeReturn *)
-        ],
-        f   (* ⟵ return result *)
-      ]
-    ]
-  ];
-SetAttributes[System`ScopeExit, HoldFirst];
-ScopeExit[finally_] := Sow[Hold[finally], Scope];
-System`ScopeReturn[ret_] := Throw[ret, Scope];
+<< ScopeExit.m
 
 (* $SystemShell = "zsh"; *)
 
