@@ -10,13 +10,33 @@ Begin["System`Private`"];
 
 << QuantityInput.m
 
+<< DifferentialD.m
+
+<< SwitchPattern.m
+
+<< ScopeExit.m
+
+<< IfThenElse.m
+
+<< ForEach.m
+
+<< SequenceParse.m
+
+<< AllowTrailingComma.m
+
+If[ $VersionNumber >= 10,
+<< TypeSystemEither.m ]
+
+
+(* (BeginPackage[#];EndPackage[];)& ~Scan~ {"Internal`", "GeneralUtilities`", "Macros`"}; *)
+<<Internal`
+<<GeneralUtilities`
+<<Macros`
+
 System`RunShell[cmd___String] := RunProcess[{"zsh", "-c", StringJoin@Riffle[{cmd}, " "]}, "StandardOutput"];
 System`RunShell[___] := $Failed;
 
 System`KeyList[list___][assn_] := assn[[#]] & /@ {list};
-
-
-<< DifferentialD.m
 
 System`$PlotThemes := System`$PlotThemes = (
   ListPlot[{}, PlotTheme -> Automatic];
@@ -52,8 +72,6 @@ System`ShowColors[c_:"Indexed"]:=Multicolumn[
       RoundingRadius -> 5]}, Alignment -> Center] & /@ 
   ColorData[c], 3, Alignment -> Center]
 
-<< SwitchPattern.m
-
 System`PlotThemeOptions[theme_, smbl_:Plot] := Last /@ System`PlotThemeDump`resolvePlotTheme[theme, smbl];
 System`ShowPlotTheme[theme_, smbl_:Plot] := Misc`EvalOnce @ System`PlotThemeDump`resolvePlotTheme[theme, smbl];
 System`FilterThemeOptions[theme_, smbl_:Plot, dest_:Graphics] := FilterRules[System`PlotThemeOptions[theme, smbl], Options @ dest];
@@ -66,24 +84,11 @@ AppendTo[ UpValues@System`ToUnit, HoldPattern[MessageName[System`ToUnit, unit_]]
 (* to be used as the value of ComplexityFunction option *)
 System`SymbolComplexity[expr_] := Total[Last /@ Tally[Cases[expr, _Symbol, Infinity]]];
 
-<< ScopeExit.m
-
 (* $SystemShell = "zsh"; *)
 
 
 
 
-
-(* ::Subsection:: *)
-(*IF*)
-
-<< IfThenElse.m
-
-
-(* ::Subsection:: *)
-(*ForEach*)
-
-<< ForEach.m
 
 
 (* ::Subsection:: *)
@@ -108,35 +113,6 @@ Unprotect@NotebookPath;
 System`NotebookPath[s_String] := FileNameJoin[{NotebookDirectory[], s}];
 Protect@NotebookPath;
 
-
-(* ::Subsection:: *)
-(*Correct some system behaviour*)
-
-
-<< ThrowGeneral.m
-
-If[ $VersionNumber >= 10, << TypeSystemEither.m ]
-
-
-(* ::Subsection:: *)
-(*Simple input of Sequence*)
-
-<< SequenceParse.m
-
-
-(* ::Subsection:: *)
-(*Allow trailing comma*)
-
-<< AllowTrailingComma.m
-
-
-(* ::Subsection:: *)
-(*Preload*)
-
-(* (BeginPackage[#];EndPackage[];)& ~Scan~ {"Internal`", "GeneralUtilities`", "Macros`"}; *)
-<<Internal`
-<<GeneralUtilities`
-<<Macros`
 
 
 (* ::Subsection:: *)
