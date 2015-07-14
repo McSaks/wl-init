@@ -24,3 +24,10 @@ Some Wolfram Language (a.k.a. Mathematica) packages that make things easier
   Also, `IfQ` is added to surely choose bwtween branches;
   it is guaranteed to be evaluated to one of the branches,
   unlike `If` which stays unevaluated unless `test` evaluates to boolean.
+
+* `QuantityInput.m`: Simple input of `Quantity[5, "cm"]` as `5::cm`.
+
+* `ScopeExit.m`: Write here, defer evaluation until end of block.
+  Useful for assured resources release.
+  Inspired by `scope(exit)` in D language.
+
