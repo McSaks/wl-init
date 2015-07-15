@@ -31,3 +31,12 @@ Some Wolfram Language (a.k.a. Mathematica) packages that make things easier
   Useful for assured resources release.
   Inspired by `scope(exit)` in D language.
 
+* `SequenceParse.m`: When in boxes interface, `Sequence`s may be entered in parentheses separated by comma:
+  `()` is empty `Sequence[]`, `(1,)` is unary `Sequence[1]`, `(1,2,3)` is `Sequence[1,2,3]`.
+  `∅∅` interprets as (not evaluates to) `Sequence[]` even in text interface.
+
+* `SwitchPattern.m` (maybe not the best name, couldn’t think up better):
+  System `Switch` function compares its first argument to several pattern forms,
+  and evaluates to the value corresponding to the first match.
+  The problem is, values cannot use variables (named patterns) bound in pattern forms.
+  The `SwitchPattern` function solves this problem.
