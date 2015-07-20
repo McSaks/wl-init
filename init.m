@@ -29,9 +29,11 @@ If[ $VersionNumber >= 10,
 
 
 (* (BeginPackage[#];EndPackage[];)& ~Scan~ {"Internal`", "GeneralUtilities`", "Macros`"}; *)
-<<Internal`
-<<GeneralUtilities`
-<<Macros`
+Quiet[
+  <<Internal`;
+  <<GeneralUtilities`;
+  <<Macros`;
+]
 
 System`RunShell[cmd___String] := RunProcess[{"zsh", "-c", StringJoin@Riffle[{cmd}, " "]}, "StandardOutput"];
 System`RunShell[___] := $Failed;
@@ -125,7 +127,8 @@ $HistoryLength = 3;
 Unprotect @ $Permissions;
 $Permissions = "Public";
 
-SetOptions[SendMail, Get["mail_auth.wl"]] // Quiet;
+auth = Get["mail_auth.wl"] // Quiet;
+If[auth =!= $Failed, SetOptions[SendMail, auth]];
 
 
 (*Unprotect @ Convolve;
