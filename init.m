@@ -24,6 +24,8 @@ Begin["System`Private`"];
 
 << AllowTrailingComma.m
 
+<< ThrowGeneral.m
+
 If[ $VersionNumber >= 10,
 << TypeSystemEither.m ]
 
