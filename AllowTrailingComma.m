@@ -22,6 +22,20 @@ Do[ With[{block = $block},
   ], {$block, $blocks}];
 Protect /@ $blocks;
 
+$switches = {Switch, Which};
+Unprotect /@ $switches;
+Do[ With[{switch = $switch},
+  $block[args__, Null] := block[args]
+  ], {$switch, $switches}];
+Protect /@ $switches;
+
+$replaces = {Replace, ReplaceAll, ReplaceList, ReplaceRepeated, StringReplace, StringReplaceList};
+Unprotect /@ $replaces;
+Do[ With[{replace = $replace},
+  $block[what_, {rules__, Null}, rest___] := block[what, {rules}, rest]
+  ], {$replace, $replaces}];
+Protect /@ $replaces;
+
 
 End[];
 
