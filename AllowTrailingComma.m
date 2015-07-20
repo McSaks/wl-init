@@ -24,10 +24,12 @@ Protect /@ $blocks;
 
 $switches = {Switch, Which};
 Unprotect /@ $switches;
-Do[ With[{switch = $switch},
+(* Do[ With[{switch = $switch},
   $switch[args__, Null] := switch[args]
   ], {$switch, $switches}];
-Protect /@ $switches;
+Protect /@ $switches; *)
+Which[args: PatternSequence[_, _]..., Null] := Which[args]
+Switch[test_, args: PatternSequence[_, _]..., Null] := Switch[test, args]
 
 $replaces = {Replace, ReplaceAll, ReplaceList, ReplaceRepeated, StringReplace, StringReplaceList};
 Unprotect /@ $replaces;
