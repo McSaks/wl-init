@@ -25,14 +25,14 @@ Protect /@ $blocks;
 $switches = {Switch, Which};
 Unprotect /@ $switches;
 Do[ With[{switch = $switch},
-  $block[args__, Null] := block[args]
+  $switch[args__, Null] := switch[args]
   ], {$switch, $switches}];
 Protect /@ $switches;
 
 $replaces = {Replace, ReplaceAll, ReplaceList, ReplaceRepeated, StringReplace, StringReplaceList};
 Unprotect /@ $replaces;
 Do[ With[{replace = $replace},
-  $block[what_, {rules__, Null}, rest___] := block[what, {rules}, rest]
+  $replace[what_, {pre__, Null, post__}, rest___] := replace[what, {pre, post}, rest]
   ], {$replace, $replaces}];
 Protect /@ $replaces;
 
