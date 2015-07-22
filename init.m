@@ -89,6 +89,22 @@ System`SymbolComplexity[expr_] := Total[Last /@ Tally[Cases[expr, _Symbol, Infin
 
 (* $SystemShell = "zsh"; *)
 
+Unprotect /@ {System`NotImplemented, System`Uninitialized}
+
+NotImplemented[] := Throw[$Failed, NotImplemented]
+NotImplemented[e_] := (Message[NotImplemented::msg, HoldForm[e]]; Throw[HoldForm[e], NotImplemented])
+NotImplemented[s_Symbol] := With[{sn = SymbolName@Unevaluated@s}, s := NotImplemented[sn]]
+SetAttributes[NotImplemented, HoldFirst]
+NotImplemented::msg = "`1` is not implemented.";
+
+Uninitialized[] := Throw[$Failed, Uninitialized]
+Uninitialized[e_] := (Message[Uninitialized::msg, HoldForm[e]]; Throw[HoldForm[e], Uninitialized])
+Uninitialized[s_Symbol] := With[{sn = SymbolName@Unevaluated@s}, s := Uninitialized[sn]]
+SetAttributes[Uninitialized, HoldFirst]
+Uninitialized::msg = "`1` is uninitialized.";
+
+Protect /@ {NotImplemented, Uninitialized}
+
 
 
 
