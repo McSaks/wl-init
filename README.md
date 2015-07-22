@@ -54,3 +54,5 @@ Some Wolfram Language (a.k.a. Mathematica) packages that make things easier
 * `TypeSystemEither.m`: ``TypeSystem`Either`` union type is declared but not working (at least, in 10.0.1).
   This is a minor fix just to type check via ``TypeSystem`ConformsQ``.
   Complex things with `Dataset` are not considered.
+
+* `IsQ.m`: `IsQ[expr, head]` or `IsQ[head][expr]` is equivalent to `Head[expr] === head`.

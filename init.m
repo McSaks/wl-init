@@ -26,6 +26,8 @@ Begin["System`Private`"];
 
 << ThrowGeneral.m
 
+<< IsQ.m
+
 If[ $VersionNumber >= 10,
 << TypeSystemEither.m ]
 
