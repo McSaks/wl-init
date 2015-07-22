@@ -1,4 +1,4 @@
-BeginPackage["IsQ`"];
+BeginPackage["IsQ`", {"FormatUsage`"}];
 
 IsQ::usage = "`IsQ[_expr_, _head_]` tests if `_expr_`'s Head is `_head_`.
 `IsQ[_head_]` represents an operator form of `IsQ` that can be applied to an expression.

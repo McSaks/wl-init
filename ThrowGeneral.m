@@ -1,4 +1,4 @@
-BeginPackage["ThrowGeneral`"];
+BeginPackage["ThrowGeneral`", {"FormatUsage`", "UsageOnly`"}];
 
 ThrowGeneral::usage = "Two different forms of `Throw` & `Catch` is a headache.
 Both `Catch[ Throw[_expr_, _tag_] ]` and `Catch[ Throw[_expr_] , /_]` catch nothing!

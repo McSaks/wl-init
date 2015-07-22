@@ -1,4 +1,4 @@
-BeginPackage["TypeSystemEither`"];
+BeginPackage["TypeSystemEither`", {"FormatUsage`", "UsageOnly`"}];
 
 TypeSystemEither::usage = "Either type from WL10 is declared but not working.
 `TypeSystem‘Either[_type\_1_, _type\_2_, ...]` represents a union type." //Private`FormatUsage // StringReplace[#, "‘"->"`"]&;

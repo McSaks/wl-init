@@ -1,4 +1,4 @@
-BeginPackage["ForEach`"];
+BeginPackage["ForEach`", {"FormatUsage`"}];
 
 ForEach::usage = "`ForEach[_var_, _from_, _to_, _[step]_, _body_]`, or \
 `ForEach[_var_ -> _from_ ;; _to_ ;; _[step]_, _body_]`, or `ForEach[_var_ -> _list_, _body_]` is another syntax \

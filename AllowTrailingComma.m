@@ -1,4 +1,4 @@
-BeginPackage["AllowTrailingComma`"];
+BeginPackage["AllowTrailingComma`", {"FormatUsage`", "UsageOnly`"}];
 
 AllowTrailingComma::usage = "Drop every trailing comma in `RowBox`.
 Only boxes interface. For some reason, `$PreRead` doesn't work in text-based interface at all!

@@ -10,3 +10,6 @@ UsageOnly[sym_] := (
 );
 
 End[];
+
+BeginPackage["UsageOnly`"];
+EndPackage[];

@@ -4,39 +4,36 @@
 
 Begin["System`Private`"];
 
-<< FormatUsage.m
 
-<< UsageOnly.m
+Needs["QuantityInput`"];
 
-<< QuantityInput.m
+Needs["DifferentialD`"];
 
-<< DifferentialD.m
+Needs["SwitchPattern`"];
 
-<< SwitchPattern.m
+Needs["ScopeExit`"];
 
-<< ScopeExit.m
+Needs["IfThenElse`"];
 
-<< IfThenElse.m
+Needs["ForEach`"];
 
-<< ForEach.m
+Needs["SequenceParse`"];
 
-<< SequenceParse.m
+Needs["AllowTrailingComma`"];
 
-<< AllowTrailingComma.m
+Needs["ThrowGeneral`"];
 
-<< ThrowGeneral.m
-
-<< IsQ.m
+Needs["IsQ`"];
 
 If[ $VersionNumber >= 10,
-<< TypeSystemEither.m ]
+Needs["TypeSystemEither`"] ];
 
 
 (* (BeginPackage[#];EndPackage[];)& ~Scan~ {"Internal`", "GeneralUtilities`", "Macros`"}; *)
 Quiet[
-  <<Internal`;
-  <<GeneralUtilities`;
-  <<Macros`;
+  Needs["Internal`"];
+  Needs["GeneralUtilities`"];
+  Needs["Macros`"];
 ]
 
 System`RunShell[cmd___String] := RunProcess[{"zsh", "-c", StringJoin@Riffle[{cmd}, " "]}, "StandardOutput"];

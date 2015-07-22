@@ -1,4 +1,4 @@
-BeginPackage["QuantityInput`"];
+BeginPackage["QuantityInput`", {"FormatUsage`", "UsageOnly`"}];
 
 QuantityInput::usage = "5::cm is now interpreted as Quantity[5, \"cm\"] as 5 is not a symbol.";
 Private`UsageOnly[QuantityInput];

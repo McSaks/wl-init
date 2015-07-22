@@ -1,4 +1,4 @@
-BeginPackage["IfThenElse`"];
+BeginPackage["IfThenElse`", {"FormatUsage`", "UsageOnly`"}];
 
 IfQ::usage = "`IfQ[_condition_, _t_, _f_]` gives `_t_` if `_condition_` evaluates to `True`, and `_f_` otherwise. \
 `_f_` is evaluated if `_condition_` evaluates to anything but `True`.

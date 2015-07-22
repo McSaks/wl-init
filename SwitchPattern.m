@@ -1,4 +1,4 @@
-BeginPackage["SwitchPattern`"];
+BeginPackage["SwitchPattern`", {"FormatUsage`"}];
 
 Unprotect @ SwitchPattern;
 SwitchPattern::usage = StringReplace[Switch::usage, "Switch" -> "SwitchPattern"] <> "

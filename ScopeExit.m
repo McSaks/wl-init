@@ -1,4 +1,4 @@
-BeginPackage["ScopeExit`"];
+BeginPackage["ScopeExit`", {"ThrowGeneral`", "FormatUsage`"}];
 
 Scope::usage = "`Scope[ ...; ScopeExit[ _release_ ]; ... ]` evaluates scope body and \
 at end of scope all `_release_`s in reverse order, no matter whether the scope \

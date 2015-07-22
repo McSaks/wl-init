@@ -1,4 +1,4 @@
-BeginPackage["SequenceParse`"];
+BeginPackage["SequenceParse`", {"FormatUsage`", "UsageOnly`"}];
 
 SequenceParse::usage = "`\[EmptySet]\[EmptySet]`, `()`, `(1,)`, `(1,2)`, `(1,2,3,)` are now parsed as `Sequence`s.
 Only boxes interface. For some reason, `$PreRead` doesn't work in text-based interface at all!

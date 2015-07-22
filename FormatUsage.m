@@ -18,3 +18,6 @@ FormatUsage[str_] := StringReplace[str,
   }] <> "\),\"\",ShowStringCharacters->True]\)"];
 
 End[];
+
+BeginPackage["FormatUsage`"];
+EndPackage[];
