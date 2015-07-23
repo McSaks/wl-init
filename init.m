@@ -25,6 +25,8 @@ Needs["ThrowGeneral`"];
 
 Needs["IsQ`"];
 
+Needs["WithNest`"];
+
 If[ $VersionNumber >= 10,
 Needs["TypeSystemEither`"] ];
 

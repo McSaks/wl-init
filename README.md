@@ -56,3 +56,13 @@ Some Wolfram Language (a.k.a. Mathematica) packages that make things easier
   Complex things with `Dataset` are not considered.
 
 * `IsQ.m`: `IsQ[expr, head]` or `IsQ[head][expr]` is equivalent to `Head[expr] === head`.
+
+* `WithNest.m`: The package provide versions of `With` and `Module` — `WithNest` and `ModuleNest`
+  in which each local-variable initialisations may refer to previously defined ones.
+  E.g. `WithNest[{a = 1, b = -a, c = 42}, b + c]` gives `41`.
+  Braces are optional, i.e. one can write `WithNest[a = 1, b = -a, c = 42, b + c]`.
+  ``System`Block`` already has the property of consecutive initialisers, so `BlockNest` is provided
+  just in consistency and for a braceless form.
+  The `*Nest` names are for historical reasons;
+  now I doubt they are good enough, but cannot think up better ones.
+  ``GeneralUtilities`Where`` provides the same behaviour as `WithNest` in a braceless form.
