@@ -66,3 +66,7 @@ Some Wolfram Language (a.k.a. Mathematica) packages that make things easier
   The `*Nest` names are for historical reasons;
   now I doubt they are good enough, but cannot think up better ones.
   ``GeneralUtilities`Where`` provides the same behaviour as `WithNest` in a braceless form.
+
+* `TheSymbol.m`: Some single-letter system symbols — `E`, `I`, `O`, `D`, `K`, `C`, `N` — are protected.
+  `TheSymbolE, TheSymbolI, …` are provided that are displayed as a letter and are assignable.
+  `TheSymbol[⟨symbol or string⟩]` can be used nad may evaluated to one of the above symbols.

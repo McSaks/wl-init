@@ -27,6 +27,8 @@ Needs["IsQ`"];
 
 Needs["WithNest`"];
 
+Needs["TheSymbol`"];
+
 If[ $VersionNumber >= 10,
 Needs["TypeSystemEither`"] ];
 
