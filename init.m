@@ -4,6 +4,7 @@
 
 Begin["System`Private`"];
 
+Needs /@ {"FormatUsage`", "UsageOnly`", "ThrowGeneral`"};
 
 Needs["QuantityInput`"];
 
