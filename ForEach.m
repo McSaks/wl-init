@@ -20,21 +20,24 @@ and
 Begin["`Private`"];
 
 SetAttributes[ForEach, HoldAll];
+SetAttributes[forEach, HoldAll];
 
 ForEach[varlist_List, do: CompoundExpression[___, Null]] := Do[do, varlist];
-ForEach[var_ -> list_List, do: CompoundExpression[___, Null]] := Do[do, {var, list}];
+forEach[var_ -> list_List, do: CompoundExpression[___, Null]] := Do[do, {var, list}];
 ForEach[var_, f_, do: CompoundExpression[___, Null]] := Do[do, {var, f}];
 ForEach[var_, i_, f_, step: _|PatternSequence[], do: CompoundExpression[___, Null]] := Do[do, {var, i, f, step}];
 
 ForEach[varlist_List, do_] := Table[do, varlist];
-ForEach[var_ -> list_List, do_] := Table[do, {var, list}];
+forEach[var_ -> list_List, do_] := Table[do, {var, list}];
 ForEach[var_, f_, do_] := Table[do, {var, f}];
 ForEach[var_, i_, f_, step: _|PatternSequence[], do_] := Table[do, {var, i, f, step}];
 SyntaxInformation[ForEach] = {"LocalVariables" -> {"Table", {1, 1}},
   "ArgumentsPattern" -> {_, _, _., _., _.}};
 
-ForEach[var_ -> i_ ;; f_ ;; step: (_|PatternSequence[]), do_] := ForEach[var, i, f, step, do];
-ForEach[var_ -> i_ ;; All ;; step: (_|PatternSequence[]), do_] := ForEach[var, i, Infinity, step, do]; (* Infinite loops should be implemented *)
+ForEach[var_ -> spec_, do_] := With[{s = spec}, forEach[var -> s, do]];
+
+forEach[var_ -> i_ ;; f_ ;; step: (_|PatternSequence[]), do_] := ForEach[var, i, f, step, do];
+forEach[var_ -> i_ ;; All ;; step: (_|PatternSequence[]), do_] := ForEach[var, i, Infinity, step, do]; (* Infinite loops should be implemented *)
 
 ForEach[_] /; ArgumentCountQ[ForEach, 1, 2, 5] = $Failed;
 ForEach[] /; ArgumentCountQ[ForEach, 0, 2, 5] = $Failed;
@@ -42,7 +45,13 @@ ForEach[args: PatternSequence[_, _, _, _, _, __]] /; ArgumentCountQ[ForEach, Len
 ForEach[expr_, _] /; Message[ForEach::rule, HoldForm[expr]] = $Failed;
 ForEach[args: PatternSequence[___]] /; 3 <= Length[Hold[args]] <= 5 && Message[ForEach::args, ForEach] = $Failed;
 
-ForEach::rule = "Tho-argument form of `ForEach` must be either `ForEach[_var_ -> _list_, _body_]` or `ForEach[_list_, _body_]`" //Private`FormatUsage;
+forEach[_] /; ArgumentCountQ[ForEach, 1, 2, 5] = $Failed;
+forEach[] /; ArgumentCountQ[ForEach, 0, 2, 5] = $Failed;
+forEach[args: PatternSequence[_, _, _, _, _, __]] /; ArgumentCountQ[ForEach, Length[Hold[args]], 2, 5] = $Failed;
+forEach[expr_, _] /; Message[ForEach::rule, HoldForm[expr]] = $Failed;
+forEach[args: PatternSequence[___]] /; 3 <= Length[Hold[args]] <= 5 && Message[ForEach::args, ForEach] = $Failed;
+
+ForEach::rule = "Two-argument form of `ForEach` must be either `ForEach[_var_ -> _list_, _body_]` or `ForEach[_list_, _body_]`" //Private`FormatUsage;
 
 End[];
 
