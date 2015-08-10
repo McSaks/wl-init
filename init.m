@@ -31,7 +31,13 @@ Needs["WithNest`"];
 Needs["TheSymbol`"];
 
 If[ $VersionNumber >= 10,
-Needs["TypeSystemEither`"] ];
+  
+  Needs["TypeSystemEither`"];
+  
+  If[Names["System`Associate"] === {},
+    Needs["Associate`"]];
+  
+];
 
 
 (* (BeginPackage[#];EndPackage[];)& ~Scan~ {"Internal`", "GeneralUtilities`", "Macros`"}; *)
