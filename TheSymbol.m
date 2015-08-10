@@ -39,7 +39,7 @@ ToString[TheSymbol[s_String?Internal`SymbolNameQ],
 
 SetAttributes[TheSymbol, HoldFirst];
 TheSymbol[s_Symbol] := TheSymbol[Evaluate @ SymbolName @ Unevaluated @ s];
-(* TheSymbol[Complex[0, 1]] := TheSymbolI; (* I is evaluated as Complex[0, 1] and is not asymbol *) *)
+TheSymbol[Complex[0, 1]] := TheSymbolI; (* I is evaluated as Complex[0, 1] and is not asymbol *)
 
 TheSymbol[s: "E" | "I" | "O" | "D" | "K" | "C" | "N" | "Pi"] := Symbol["TheSymbol" <> s];
 TheSymbol["\[Pi]"] := TheSymbolPi;
