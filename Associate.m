@@ -10,9 +10,9 @@ Begin["`Private`"];
 
 (* Associate[a_?AssociationQ, r: (Rule|RuleDelayed)[k_, v_]] /; KeyExistsQ[a, k] := Insert[a, r, k]; *)
 Associate[a_?AssociationQ, r : (Rule | RuleDelayed)[k_, v_]] /; KeyExistsQ[a, k] :=
-  Association @ Replace[Normal[a], (Rule | RuleDelayed)[k, _] -> r, 1];
+  Association @ Replace[Normal[a], (Rule | RuleDelayed)[k, _] -> r, {1}];
 Associate[a: {(Rule|RuleDelayed)[_, _]...}, r : (Rule | RuleDelayed)[k_, v_]] /; KeyExistsQ[a, k] :=
-  Association @ Replace[a, (Rule | RuleDelayed)[k, _] -> r, 1];
+  Association @ Replace[a, (Rule | RuleDelayed)[k, _] -> r, {1}];
 Associate[a_?AssociationQ, r: (Rule|RuleDelayed)[k_, v_]] /; ! KeyExistsQ[a, k] := Append[a, r];
 Associate[r_][a_] := Associate[a, r];
 
