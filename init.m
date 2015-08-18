@@ -8,6 +8,8 @@ Needs /@ {"FormatUsage`", "UsageOnly`", "ThrowGeneral`"};
 
 Needs["QuantityInput`"];
 
+Needs["MethodCall`"];
+
 Needs["DifferentialD`"];
 
 Needs["SwitchPattern`"]; (* see also GeneralUtilities`Match *)
