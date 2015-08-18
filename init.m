@@ -10,7 +10,7 @@ Needs["QuantityInput`"];
 
 Needs["DifferentialD`"];
 
-Needs["SwitchPattern`"];
+Needs["SwitchPattern`"]; (* see also GeneralUtilities`Match *)
 
 Needs["ScopeExit`"];
 
@@ -26,7 +26,7 @@ Needs["ThrowGeneral`"];
 
 Needs["IsQ`"];
 
-Needs["WithNest`"];
+Needs["WithNest`"]; (* see also GeneralUtilities`Where *)
 
 Needs["TheSymbol`"];
 

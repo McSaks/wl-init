@@ -3,7 +3,8 @@ BeginPackage["SwitchPattern`", {"FormatUsage`"}];
 Unprotect @ SwitchPattern;
 SwitchPattern::usage = StringReplace[Switch::usage, "Switch" -> "SwitchPattern"] <> "
 Unlike `Switch`, any `_value\_i_` can use named patterns bound in `_form\_i_`.
-`SwitchPattern` fails if no match is found. Use universal pattern _ explicitly if needed." //Private`FormatUsage;
+`SwitchPattern` fails if no match is found. Use universal pattern _ explicitly if needed.
+See also `GeneralUtilities'Match`." //Private`FormatUsage //StringReplace[#, "'" -> "`"]&;
 
 Begin["`Private`"];
 
