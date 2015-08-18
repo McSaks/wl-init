@@ -8,6 +8,10 @@ Begin["`Private`"];
 Unprotect @ MessageName;
 AppendTo[ SubValues@MessageName,
   HoldPattern @ MessageName[sym_, meth_String?NameQ][args___] :> ToExpression[meth][sym, args] ];
+AppendTo[ DownValues@MessageName,
+  HoldPattern @ MessageName[sym_, meth_String?NameQ
+    /; MemberQ[Characters["ABCDEFGHIJKLMNOPQRSTUVWXYZ"], StringTake[meth, 1]]
+    ] :> Function[Null, ToExpression[meth][sym, ##], HoldAllComplete] ];
 Protect @ MessageName;
 
 Off[Message::name];
