@@ -5,14 +5,12 @@ Private`UsageOnly[QuantityInput];
 
 Begin["`Private`"];
 
-NumericListQ[_?NumericQ] = True;
-NumericListQ[{__?NumericListQ}] = True;
-NumericListQ[_] = False;
-SetAttributes[NumericListQ, HoldFirst];
+NumericList = Numeric | {Numeric..};
+Numeric = _Integer | _Rational | _Real | _Complex;
 
 Unprotect @ MessageName;
 AppendTo[ DownValues@MessageName,
-  HoldPattern @ MessageName[x:_?NumericListQ, u_String] :> Quantity[x, u] ];
+  With[{n = NumericList}, HoldPattern @ MessageName[x: n, u_String]] :> Quantity[x, u] ];
 Protect @ MessageName;
 
 
