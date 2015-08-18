@@ -10,6 +10,7 @@ AppendTo[ SubValues@MessageName,
   HoldPattern @ MessageName[sym_, meth_String?NameQ][args___] :> ToExpression[meth][sym, args] ];
 Protect @ MessageName;
 
+Off[Message::name];
 
 End[];
 
