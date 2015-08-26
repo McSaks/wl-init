@@ -190,4 +190,6 @@ MakeBoxes[System`GrammarToken[str_String], form_] :=
     &),
     Tooltip -> "GrammarToken"];
 
+System`AllForm[f___] := Directive[f, EdgeForm[{f}]];
+
 End[];
