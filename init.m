@@ -32,6 +32,8 @@ Needs["WithNest`"]; (* see also GeneralUtilities`Where *)
 
 Needs["TheSymbol`"];
 
+Needs["Second`"];
+
 If[ $VersionNumber >= 10,
   
   Needs["TypeSystemEither`"];

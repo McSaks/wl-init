@@ -76,3 +76,5 @@ Some Wolfram Language (a.k.a. Mathematica) packages that make things easier
   `Append`/`Prepend` add entry strongly at end/start, even on existing key.
   `Insert` works differently depending on whether key exists.
   Moreover, `Insert` holds an old rule type (-> or :>), not the specified one.
+
+* `Second.m`: Convenient functions `Second`, `Third`, …, `Tenth` — wrappers of `Part`.
