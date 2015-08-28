@@ -31,7 +31,7 @@ Some Wolfram Language (a.k.a. Mathematica) packages that make things easier
 
 * `QuantityInput.m`: Simple input of `Quantity[5, "cm"]` as `5::cm`.
 
-* `MethodCall.m`: OO-style syntactic sugar: expr::foo[args…] evaluates to foo[expr, args…].
+* `MethodCall.m`: OO-style syntactic sugar: `expr::foo[args…]` evaluates to `foo[expr, args…]`.
 
 * `ScopeExit.m`: Write here, defer evaluation until end of block.
   Useful for assured resources release.
