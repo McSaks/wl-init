@@ -69,7 +69,7 @@ Some Wolfram Language (a.k.a. Mathematica) packages that make things easier
 
 * `TheSymbol.m`: Some single-letter system symbols — `E`, `I`, `O`, `D`, `K`, `C`, `N`, `π` — are protected.
   `TheSymbolE, TheSymbolI, …, TheSymbolPi` are provided that are displayed as a letter and are assignable.
-  `TheSymbol[⟨symbol or string⟩]` can be used nad may evaluated to one of the above symbols.
+  `TheSymbol[⟨symbol or string⟩]` can be used to be evaluated to one of the above symbols.
 
 * `Associate.m`: WL 10.1 has an imperative in-place `AssociateTo` symbol.
   Strangely enough, there’s no pure `Associate` function.
