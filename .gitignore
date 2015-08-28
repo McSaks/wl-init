@@ -1,2 +1,4 @@
 mail_auth.wl
 *.Test.nb
+*.db
+*.html
