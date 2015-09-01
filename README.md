@@ -17,7 +17,7 @@ Some Wolfram Language (a.k.a. Mathematica) packages that make things easier
 * `FormatUsage.m`: A ``Private`FormatUsage`` function that is used in other packages to, yes, format usage messages.
   Later, I found ``Macros`SetUsage`` but it didn’t satisfy me.
 
-* `UsageOnly.m`: A ``Private`UsageOnly[symb]`` auxillary function that is used in some packages
+* `UsageOnly.m`: A ``Private`UsageOnly[symb]`` auxiliary function that is used in some packages
   to indicate that the symbol does nothing but holds `symb::usage` message.
   It may be used in a package that does not introduce valuable eponymous symbol.
 
@@ -25,7 +25,7 @@ Some Wolfram Language (a.k.a. Mathematica) packages that make things easier
   when used not as ternary operator with several-word branches
   but as conditional statement with large branches. Else branch starts somewhere below with a tiny comma (one of many).
   `If [test] Then [ifTrue] Else [ifFalse]` is much easier to read.
-  Also, `IfQ` is added to surely choose bwtween branches;
+  Also, `IfQ` is added to surely choose between branches;
   it is guaranteed to be evaluated to one of the branches,
   unlike `If` which stays unevaluated unless `test` evaluates to boolean.
 
@@ -65,7 +65,7 @@ Some Wolfram Language (a.k.a. Mathematica) packages that make things easier
   just in consistency and for a braceless form.
   The `*Nest` names are for historical reasons;
   now I doubt they are good enough, but cannot think up better ones.
-  ``GeneralUtilities`Where`` provides the same behaviour as `WithNest` in a braceless form.
+  ``GeneralUtilities`Where`` provides the same behavior as `WithNest` in a braceless form.
 
 * `TheSymbol.m`: Some single-letter system symbols — `E`, `I`, `O`, `D`, `K`, `C`, `N`, `π` — are protected.
   `TheSymbolE, TheSymbolI, …, TheSymbolPi` are provided that are displayed as a letter and are assignable.
