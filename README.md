@@ -1,5 +1,7 @@
 # wl-init #
 
+<!-- language-all: mathematica -->
+
 Some Wolfram Language (a.k.a. Mathematica) packages that make things easier
 
 * `AllowTrailingComma.m`: Drop every trailing comma in `RowBox`.
@@ -32,6 +34,18 @@ Some Wolfram Language (a.k.a. Mathematica) packages that make things easier
 * `QuantityInput.m`: Simple input of `Quantity[5, "cm"]` as `5::cm`.
 
 * `MethodCall.m`: OO-style syntactic sugar: `expr::foo[args…]` evaluates to `foo[expr, args…]`.
+  Some functions like `Map`, `Apply`, `Nest`, etc. are treated with first two arguments reversed.
+  Method calls may be chained, thus
+  
+          l = {{1, 2, 3}, {4, 5, 6}};
+          (l ::Append[{7, 8, 9}]
+             ::Apply[Plus, {1}]
+             ::Riffle[", and "]
+             ::Map[ToString]
+             ::StringJoin[])
+  gives `"6, and 15, and 24"`.  
+  The package may conflict with the ``QuantityInput` `` package, so the code above works only due to `l` being not explicitly (in its unevaluated form) a number or a list of numbers.
+  (Also note the parentheses: without them, newlines would terminate expression leading to a syntax error.)
 
 * `ScopeExit.m`: Write here, defer evaluation until end of block.
   Useful for assured resources release.
