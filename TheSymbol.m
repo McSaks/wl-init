@@ -53,48 +53,56 @@ MakeBoxes[TheSymbolE, form_] := TemplateBox[{}, "TheSymbolE",
   InterpretationFunction -> ("TheSymbolE" &),
   Tooltip -> Automatic];
 ToString[TheSymbolE, form: Except[InputForm] | PatternSequence[]] ^:= "E";
+Format[TheSymbolE, OutputForm] = "E";
 
 MakeBoxes[TheSymbolI, form_] := TemplateBox[{}, "TheSymbolI",
   DisplayFunction -> ("I" &),
   InterpretationFunction -> ("TheSymbolI" &),
   Tooltip -> Automatic];
 ToString[TheSymbolI, form: Except[InputForm] | PatternSequence[]] ^:= "I";
+Format[TheSymbolI, OutputForm] = "I";
 
 MakeBoxes[TheSymbolO, form_] := TemplateBox[{}, "TheSymbolO",
   DisplayFunction -> ("O" &),
   InterpretationFunction -> ("TheSymbolO" &),
   Tooltip -> Automatic];
 ToString[TheSymbolO, form: Except[InputForm] | PatternSequence[]] ^:= "O";
+Format[TheSymbolO, OutputForm] = "O";
 
 MakeBoxes[TheSymbolD, form_] := TemplateBox[{}, "TheSymbolD",
   DisplayFunction -> ("D" &),
   InterpretationFunction -> ("TheSymbolD" &),
   Tooltip -> Automatic];
 ToString[TheSymbolD, form: Except[InputForm] | PatternSequence[]] ^:= "D";
+Format[TheSymbolD, OutputForm] = "D";
 
 MakeBoxes[TheSymbolK, form_] := TemplateBox[{}, "TheSymbolK",
   DisplayFunction -> ("K" &),
   InterpretationFunction -> ("TheSymbolK" &),
   Tooltip -> Automatic];
 ToString[TheSymbolK, form: Except[InputForm] | PatternSequence[]] ^:= "K";
+Format[TheSymbolK, OutputForm] = "K";
 
 MakeBoxes[TheSymbolC, form_] := TemplateBox[{}, "TheSymbolC",
   DisplayFunction -> ("C" &),
   InterpretationFunction -> ("TheSymbolC" &),
   Tooltip -> Automatic];
 ToString[TheSymbolC, form: Except[InputForm] | PatternSequence[]] ^:= "C";
+Format[TheSymbolC, OutputForm] = "C";
 
 MakeBoxes[TheSymbolN, form_] := TemplateBox[{}, "TheSymbolN",
   DisplayFunction -> ("N" &),
   InterpretationFunction -> ("TheSymbolN" &),
   Tooltip -> Automatic];
 ToString[TheSymbolN, form: Except[InputForm] | PatternSequence[]] ^:= "N";
+Format[TheSymbolN, OutputForm] = "N";
 
 MakeBoxes[TheSymbolPi, form_] := TemplateBox[{}, "TheSymbolPi",
   DisplayFunction -> ("\[Pi]" &),
   InterpretationFunction -> ("TheSymbolPi" &),
   Tooltip -> Automatic];
-ToString[TheSymbolN, form: Except[InputForm] | PatternSequence[]] ^:= "\[Pi]";
+ToString[TheSymbolPi, form: Except[InputForm] | PatternSequence[]] ^:= "\[Pi]";
+Format[TheSymbolPi, OutputForm] = "Pi";
 
 End[];
 
