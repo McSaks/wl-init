@@ -25,6 +25,8 @@ reverseArgs = ToString /@ {
   Nest, NestList, NestWhile, NestWhileList, FixedPoint, FixedPointList,
   Apply, Scan
 };
+(* Inclusion of AssociationMap in the list above protects MessageName. HOW?! So, unprotect again: *)
+Unprotect @ MessageName;
 PrependTo[ DownValues@MessageName,
   HoldPattern @ MessageName[this_, meth_String?NameQ
     /; MemberQ[reverseArgs, meth]
