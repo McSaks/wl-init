@@ -10,6 +10,9 @@ Some Wolfram Language (a.k.a. Mathematica) packages that make things easier
   have empty (`Null`) elements in their first argument.
   In particular, trailing and leading commas are ignored.
 
+* `RangeSyntax.m`: Interpret (in boxes) `x = a … b as {x, a, b}` and `x = a … b … d as {x, a, b, d}`
+  to be used in range specification.
+
 * `DifferentialD.m`: Prettyprint `Dt[x]` as `ⅆx`.
   Conversely, interpret `ⅆx` as `Dt[x]`.
 

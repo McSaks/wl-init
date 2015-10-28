@@ -24,6 +24,8 @@ Needs["SequenceParse`"];
 
 Needs["AllowTrailingComma`"];
 
+Needs["RangeSyntax`"];
+
 Needs["ThrowGeneral`"];
 
 Needs["IsQ`"];
