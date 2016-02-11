@@ -64,6 +64,9 @@ Some Wolfram Language (a.k.a. Mathematica) packages that make things easier
   The problem is, values cannot use variables (named patterns) bound in pattern forms.
   The `SwitchPattern` function solves this problem.
 
+* `HeldPureFunction.m`: Easily construct anonymous functions with `HoldAllComplete` attribute.
+  E.g. `List @@ (Length[Unevaluated@#]&!) /@ Hold[1+1+1, 2+2]` gives `{3, 2}`.
+
 * `ThrowGeneral.m`: Two different forms of `Throw` & `Catch` — tagged and untagged — is a headache.
   They are unrelated: tagged `Catch` can’t catch untagged `Throw` and vice versa.
   So, both `Catch[ Throw[expr, tag] ]` and `Catch[ Throw[expr] , _]` catch nothing!

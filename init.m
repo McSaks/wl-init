@@ -26,6 +26,8 @@ Needs["AllowTrailingComma`"];
 
 Needs["RangeSyntax`"];
 
+Needs["HeldPureFunction`"];
+
 Needs["ThrowGeneral`"];
 
 Needs["IsQ`"];
