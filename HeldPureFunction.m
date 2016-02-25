@@ -7,8 +7,8 @@ Begin["`Private`"];
 
 Unprotect @ Factorial;
 
-body_&! := Function[Null, body, {HoldAllComplete]];
-Function[args_, body_]! := Function[args, body, {HoldAllComplete]];
+body_&! := Function[Null, body, {HoldAllComplete}];
+Function[args_, body_]! := Function[args, body, {HoldAllComplete}];
 
 Protect @ Factorial;
 
