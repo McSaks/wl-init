@@ -8,7 +8,10 @@ Begin["`Private`"];
 Unprotect @ Factorial;
 
 body_&! := Function[Null, body, {HoldAllComplete}];
-Function[args_, body_]! := Function[args, body, {HoldAllComplete}];
+Quiet[ (* WL complains about the form
+          Function[args_, body_] in l.h.s. *)
+  Function[args_, body_]! := Function[args, body, {HoldAllComplete}];
+, Function::flpar]
 
 Protect @ Factorial;
 
