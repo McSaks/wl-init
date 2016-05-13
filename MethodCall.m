@@ -1,6 +1,6 @@
 BeginPackage["MethodCall`", {"FormatUsage`", "UsageOnly`"}];
 
-MethodCall::usage = "`_obj_::_meth_[_args_...]` is evaluated as `_meth_[_obj_, _args_...]`, provided that the `_meth_` thisbol exists.
+MethodCall::usage = "`_obj_::_meth_[_args_...]` is evaluated as `_meth_[_obj_, _args_...]`, provided that the `_meth_` symbol exists.
 Some functions like `Map`, `Apply`, `Nest`, etc. are treated so that a list (or the like) is an object and function argument takes first place." //Private`FormatUsage;
 Private`UsageOnly[MethodCall];
 

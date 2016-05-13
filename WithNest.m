@@ -4,13 +4,13 @@ Unprotect[Evaluate @ Names[Context[] <> "*"]];
 
 WithNest::usage = "`WithNest[{..., _x\_i_ = _expr\_i_, ...}, _body_]` works just like `With` \
 but each `_expr\_j_` may refer any preceding `_x\_i_`.
-Braces are optional, i.e. `WithNest[..., _x\_i_ = _expr\_i_, ..., _body_]` is valid syntax." // Private`FormatUsage;
+Braces are optional, i.e. `WithNest[..., _x\_i_ = _expr\_i_, ..., _body_]` is valid syntax.
+See also `GeneralUtilities'Where`." // Private`FormatUsage //StringReplace[#, "'" -> "`"]&;
 ModuleNest::usage = "`ModuleNest[{..., _x\_i_ = _expr\_i_, ...}, _body_]` works just like `Module` \
 but each `_expr\_j_` may refer any preceding `_x\_i_`.
 Braces are optional, i.e. `ModuleNest[..., _x\_i_ = _expr\_i_, ..., _body_]` is valid syntax." // Private`FormatUsage;
 BlockNest::usage = "`BlockNest[{..., _x\_i_ = _expr\_i_, ...}, _body_]` works just like `Block` \
-but braces are optional, i.e. `BlockNest[..., _x\_i_ = _expr\_i_, ..., _body_]` is valid syntax.
-See also `GeneralUtilities'Match`." // Private`FormatUsage //StringReplace[#, "'" -> "`"]&;
+but braces are optional, i.e. `BlockNest[..., _x\_i_ = _expr\_i_, ..., _body_]` is valid syntax.";
 
 Begin["`Private`"];
 
