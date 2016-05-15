@@ -77,7 +77,7 @@ Some Wolfram Language (a.k.a. Mathematica) packages that make things easier
   This is a minor fix just to type check via ``TypeSystem`ConformsQ``.
   Complex things with `Dataset` are not considered.
 
-* `IsQ.m`: `IsQ[expr, head]` or `IsQ[head][expr]` is equivalent to `Head[expr] === head`.
+* `IsQ.m`: `IsQ[expr, head]` or `IsQ[head][expr]` is equivalent to `Head[expr] === head`. The same way, `IsntQ[expr, head]` or `IsntQ[head][expr]` is a negation of that.
 
 * `WithNest.m`: The package provide versions of `With` and `Module` — `WithNest` and `ModuleNest`
   in which each local-variable initialisations may refer to previously defined ones.
