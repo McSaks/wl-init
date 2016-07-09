@@ -49,6 +49,7 @@ Some Wolfram Language (a.k.a. Mathematica) packages that make things easier
   gives `"6, and 15, and 24"`.  
   The package may conflict with the ``QuantityInput` `` package, so the code above works only due to `l` being not explicitly (in its unevaluated form) a number or a list of numbers.
   (Also note the parentheses: without them, newlines would terminate expression leading to a syntax error.)
+  `expr //$@ foo[args…]` is a version with very low precedence.
 
 * `ScopeExit.m`: Write here, defer evaluation until end of block.
   Useful for assured resources release.
