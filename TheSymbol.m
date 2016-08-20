@@ -41,7 +41,7 @@ SetAttributes[TheSymbol, HoldFirst];
 TheSymbol[s_Symbol] := TheSymbol[Evaluate @ SymbolName @ Unevaluated @ s];
 TheSymbol[Complex[0, 1]] := TheSymbolI; (* I is evaluated as Complex[0, 1] and is not asymbol *)
 
-TheSymbol[s: "E" | "I" | "O" | "D" | "K" | "C" | "N" | "Pi"] := Symbol["TheSymbol" <> s];
+TheSymbol[s: "E" | "I" | "O" | "D" | "K" | "C" | "N" | "Pi"] := Symbol["TheSymbol`TheSymbol" <> s];
 TheSymbol["\[Pi]"] := TheSymbolPi;
 
 e: TheSymbol[Except[_String]] /; Message[TheSymbol::fnsym, HoldForm[e]] = $Failed;
@@ -50,56 +50,56 @@ TheSymbol[_, args__] /; Message[TheSymbol::argx, TheSymbol, Length @ Hold @ args
 
 MakeBoxes[TheSymbolE, form_] := TemplateBox[{}, "TheSymbolE",
   DisplayFunction -> ("E" &),
-  InterpretationFunction -> ("TheSymbolE" &),
+  InterpretationFunction -> ("TheSymbol`TheSymbolE" &),
   Tooltip -> Automatic];
 ToString[TheSymbolE, form: Except[InputForm] | PatternSequence[]] ^:= "E";
 Format[TheSymbolE, OutputForm] = "E";
 
 MakeBoxes[TheSymbolI, form_] := TemplateBox[{}, "TheSymbolI",
   DisplayFunction -> ("I" &),
-  InterpretationFunction -> ("TheSymbolI" &),
+  InterpretationFunction -> ("TheSymbol`TheSymbolI" &),
   Tooltip -> Automatic];
 ToString[TheSymbolI, form: Except[InputForm] | PatternSequence[]] ^:= "I";
 Format[TheSymbolI, OutputForm] = "I";
 
 MakeBoxes[TheSymbolO, form_] := TemplateBox[{}, "TheSymbolO",
   DisplayFunction -> ("O" &),
-  InterpretationFunction -> ("TheSymbolO" &),
+  InterpretationFunction -> ("TheSymbol`TheSymbolO" &),
   Tooltip -> Automatic];
 ToString[TheSymbolO, form: Except[InputForm] | PatternSequence[]] ^:= "O";
 Format[TheSymbolO, OutputForm] = "O";
 
 MakeBoxes[TheSymbolD, form_] := TemplateBox[{}, "TheSymbolD",
   DisplayFunction -> ("D" &),
-  InterpretationFunction -> ("TheSymbolD" &),
+  InterpretationFunction -> ("TheSymbol`TheSymbolD" &),
   Tooltip -> Automatic];
 ToString[TheSymbolD, form: Except[InputForm] | PatternSequence[]] ^:= "D";
 Format[TheSymbolD, OutputForm] = "D";
 
 MakeBoxes[TheSymbolK, form_] := TemplateBox[{}, "TheSymbolK",
   DisplayFunction -> ("K" &),
-  InterpretationFunction -> ("TheSymbolK" &),
+  InterpretationFunction -> ("TheSymbol`TheSymbolK" &),
   Tooltip -> Automatic];
 ToString[TheSymbolK, form: Except[InputForm] | PatternSequence[]] ^:= "K";
 Format[TheSymbolK, OutputForm] = "K";
 
 MakeBoxes[TheSymbolC, form_] := TemplateBox[{}, "TheSymbolC",
   DisplayFunction -> ("C" &),
-  InterpretationFunction -> ("TheSymbolC" &),
+  InterpretationFunction -> ("TheSymbol`TheSymbolC" &),
   Tooltip -> Automatic];
 ToString[TheSymbolC, form: Except[InputForm] | PatternSequence[]] ^:= "C";
 Format[TheSymbolC, OutputForm] = "C";
 
 MakeBoxes[TheSymbolN, form_] := TemplateBox[{}, "TheSymbolN",
   DisplayFunction -> ("N" &),
-  InterpretationFunction -> ("TheSymbolN" &),
+  InterpretationFunction -> ("TheSymbol`TheSymbolN" &),
   Tooltip -> Automatic];
 ToString[TheSymbolN, form: Except[InputForm] | PatternSequence[]] ^:= "N";
 Format[TheSymbolN, OutputForm] = "N";
 
 MakeBoxes[TheSymbolPi, form_] := TemplateBox[{}, "TheSymbolPi",
   DisplayFunction -> ("\[Pi]" &),
-  InterpretationFunction -> ("TheSymbolPi" &),
+  InterpretationFunction -> ("TheSymbol`TheSymbolPi" &),
   Tooltip -> Automatic];
 ToString[TheSymbolPi, form: Except[InputForm] | PatternSequence[]] ^:= "\[Pi]";
 Format[TheSymbolPi, OutputForm] = "Pi";
