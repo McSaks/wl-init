@@ -100,7 +100,8 @@ System`FilterThemeOptions[theme_, smbl_:Plot, dest_:Graphics] := FilterRules[Sys
 
 System`SortN[list_] := Sort[list, If[#1 < #2, True, False, OrderedQ[{#1, #2}]] &];
 
-System`ToUnit[unit_][quantity_] := UnitConvert[quantity, unit];
+System`ToUnit[unit_][quantity_] :=
+  quantity /. q_?QuantityQ :> UnitConvert[q, unit];
 AppendTo[ UpValues@System`ToUnit, HoldPattern[MessageName[System`ToUnit, unit_]] :> System`ToUnit[unit] ];
 
 (* to be used as the value of ComplexityFunction option *)
