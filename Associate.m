@@ -1,5 +1,7 @@
 BeginPackage["Associate`"];
 
+Associate = Association;
+(*
 Unprotect[Evaluate @ Names[Context[] <> "*"]];
 
 Associate::usage = "Associate[assoc, key -> value] adds entry to assoc or modifies one.
@@ -33,5 +35,6 @@ Associate[_, a_ /; !AssociationQ[a]] /; Message[Associate::invrl, a] = $Failed;
 End[];
 
 Protect[Evaluate @ Names[Context[] <> "*"]];
+*)
 
 EndPackage[];

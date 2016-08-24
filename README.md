@@ -94,10 +94,6 @@ Some Wolfram Language (a.k.a. Mathematica) packages that make things easier
   `TheSymbolE, TheSymbolI, …, TheSymbolPi` are provided that are displayed as a letter and are assignable.
   `TheSymbol[⟨symbol or string⟩]` can be used to be evaluated to one of the above symbols.
 
-* `Associate.m`: WL 10.1 has an imperative in-place `AssociateTo` symbol.
-  Strangely enough, there’s no pure `Associate` function.
-  `Append`/`Prepend` add entry strongly at end/start, even on existing key.
-  `Insert` works differently depending on whether key exists.
-  Moreover, `Insert` holds an old rule type (-> or :>), not the specified one.
+* `Associate.m`: `Association` has an undocumented usage as a replace-value/add-key function. There’s no need to use this `Associate` since its functionality is exactly in `Assiciation`.
 
 * `Second.m`: Convenient functions `Second`, `Third`, …, `Tenth` — wrappers of `Part`.
