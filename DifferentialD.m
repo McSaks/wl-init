@@ -19,6 +19,8 @@ MakeBoxes[Dt[f_, x_], form_] := TemplateBox[
 
 (* Show f[x] dx instead of ugly dx f[x]. *)
 MakeBoxes[factor_ Dt[x_], form_] := RowBox[{MakeBoxes[factor, form], MakeBoxes[Dt[x], form]}];
+MakeBoxes[HoldPattern[factor_ Dt[x_] Dt[y_]^-1], form_] := RowBox[{MakeBoxes[factor, form], FractionBox[MakeBoxes[Dt[x], form],MakeBoxes[Dt[y], form]]}];
+MakeBoxes[HoldPattern[Dt[x_] Dt[y_]^-1], form_] := FractionBox[MakeBoxes[Dt[x], form],MakeBoxes[Dt[y], form]];
 
 (* d(x^2) -- parentheses are mandatory *)
 MakeBoxes[Dt[x_^a_], form_] := BasicDtForm[RowBox[{"(", MakeBoxes[x^a, form], ")"}]];
